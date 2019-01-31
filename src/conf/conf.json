@@ -1,0 +1,11 @@
+{
+  "uploadUrl": "http://192.168.1.76:9652/files",
+  "watch": "c:/sunmoon/program/Git/sunmoon/go/tus/src",
+  "meta":{
+    "dir": "video/",
+    "user": "admin",
+    "project": "iiot-hongjin",
+    "author": "admin",
+    "token": "59c1c810-d808-11e8-a915-9b373e8aa9cb"
+  }
+}
