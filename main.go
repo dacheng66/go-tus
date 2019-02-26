@@ -1,19 +1,27 @@
 package main
 
 import (
-	"./tus"
-	"github.com/fsnotify/fsnotify"
-	"log"
+
 	"io/ioutil"
 	"encoding/json"
 	"os"
 	"mime"
 	"path"
 	"fmt"
+	"log"
+	MQTT "github.com/eclipse/paho.mqtt.golang"
+
+	"go-tus/tus"
+
+
 )
 
 func main() {
-	//创建一个监控对象
+
+	destopts := MQTT.NewClientOptions()
+	fmt.Println(destopts)
+
+	/*//创建一个监控对象
 	watch, err := fsnotify.NewWatcher();
 	if err != nil {
 		log.Fatal(err);
@@ -54,21 +62,18 @@ func main() {
 				}
 			}
 		}
-	}();
-
-
-
-
+	}();*/
 	data, e := ioutil.ReadFile("conf/conf.json")
 	if e != nil {
 		panic(e)
 	}
 	conf := tus.Conf{}
 	if e = json.Unmarshal(data,&conf); e != nil {
+		log.Println(e)
 		panic(e)
 	}
 
-	filepath := "c:/sunmoon/program/Git/sunmoon/go/tus/src/tus.png"
+	filepath := "tus.png"
 
 	mimetype := mime.TypeByExtension(path.Ext(filepath))
 	fmt.Println("mimetype",mimetype)
@@ -93,5 +98,5 @@ func main() {
 	uploader.Upload()
 
 	//阻塞
-	select {};
+	//select {};
 }

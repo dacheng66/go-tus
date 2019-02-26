@@ -49,7 +49,7 @@ func (c *Config) Validate() error {
 
 type Meta struct {
 	Dir string
-	Watch string
+	//Watch string
 	User string
 	Project string
 	Author string
